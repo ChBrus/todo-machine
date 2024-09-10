@@ -1,4 +1,3 @@
-import CreateTodos from "./CreateTodos";
 import TodoCounter from "./TodoCounter";
 import TodoItem from "./TodoItem";
 import Toggle from "./module/Toggle";
@@ -14,16 +13,16 @@ function TodoList({
         total: todosTemp.length
     }
 
-    const completedTodosRequired = todosInfo.completed === 0 ? ' d-none' : ''
+    const completedTodosRequired = todosInfo.completed === 0 ? 'd-none' : ''
 
     return (
-        <main className="todo-list py-2 px-4 text-light">
+        <main className="todo-list py-2 px-4 mb-6">
             <TodoCounter
                 listHeader={'Inbox'}
                 todosInfo={todosInfo}
             />
             <section>
-                <ul className="navbar-nav">
+                <ul className="navbar-nav gap-3">
                     {todosTemp.filter(todo => !todo.completed).map((todo, todoIdx) => {
                         return (
                             <TodoItem
@@ -36,8 +35,10 @@ function TodoList({
                         )
                     })}
                 </ul>
-                <h6 className={completedTodosRequired} >Completados</h6>
-                <ul className={"navbar-nav" + completedTodosRequired}>
+            </section>
+            <section className={completedTodosRequired}>
+                <h6>Completados</h6>
+                <ul className="navbar-nav gap-3">
                     {todosTemp.filter(todo => todo.completed).map((todo, todoIdx) => {
                         return (
                             <TodoItem
@@ -51,8 +52,6 @@ function TodoList({
                     })}
                 </ul>
             </section>
-            <hr />
-            <CreateTodos />
         </main>
     );
 }

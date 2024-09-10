@@ -7,13 +7,22 @@ import Todo from "./module/Todo";
 import { ListFactory } from "./module/List";
 import { Icon } from "./module/Icon";
 import Toggle from "./module/Toggle";
+import CreateTodos from "./CreateTodos";
 
 function App() {
     const [todos, setTodos] = React.useState([
         new Todo('Estudiar para el EXANI-II en curso.unibetas.com'),
         new Todo('Terminarme este rico cereal'),
         new Todo('Sacar el bote del refrigerador para tomar agua bien helada'),
-        new Todo('No dormirse tan tarde JAKSJWQKAL')
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
+        new Todo('No dormirse tan tarde JAKSJWQKAL'),
     ]);
 
     const todosToggle = new Toggle(todos, setTodos)
@@ -31,6 +40,7 @@ function App() {
                 todosToggle={todosToggle}
                 listsToggle={listsToggle}
             />
+            <CreateTodos />
         </>
     );
 }

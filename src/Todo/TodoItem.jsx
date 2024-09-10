@@ -9,10 +9,10 @@ function TodoItem({
     completed
 }) {
     const completerClass = 'todo-completer'
-    const icon = (completed ? Icon.CheckCircle.getClass() : Icon.Circle.getClass())
+    const icon = (completed ? Icon.CheckCircle.getClass() + ' text-green-700' : Icon.Circle.getClass())
 
     return (
-        <li className="todo-item nav-item">
+        <li className="todo-item nav-item bg-third text-primary">
             <span className={completerClass} role="checkbox"
                 onClick={() => {
                     const todoTemp = todo
@@ -24,7 +24,7 @@ function TodoItem({
                 <i className={icon}></i>
             </span>
             <p className="todo-description">{title}</p>
-            <span className="todo-deleter color-danger" role="checkbox"
+            <span className="btn btn-danger d-flex justify-content-center align-items-center" role="checkbox"
                 onClick={() => {
                     const todoTemp = todo
                     todoTemp.completed = !todoTemp.completed

@@ -15,6 +15,34 @@ $gray: #acb5be;
 $black: #000;
 $white: #fff;
 
+$green-mix: (
+    "green-950": #003023,
+    "green-900": #005b41,
+    "green-800": #006647,
+    "green-700": #008258,
+    "green-600": #00a26a,
+    "green-500": #02c782,
+    "green-400": #27e099,
+    "green-300": #64f1b6,
+    "green-200": #a1f9cf,
+    "green-100": #cefde4,
+    "green-50": #ebfef5,
+);
+
+$blue-mix: (
+    "blue-950": #1b2236,
+    "blue-900": #283452,
+    "blue-800": #2b3c61,
+    "blue-700": #314673,
+    "blue-600": #415f9d,
+    "blue-500": #4d6eaa,
+    "blue-400": #6f8dc1,
+    "blue-300": #a2b4d7,
+    "blue-200": #cdd6ea,
+    "blue-100": #e9ecf5,
+    "blue-50": #f4f6fb,
+);
+
 // Custom colors
 $danger: $red;
 $success: $green;
@@ -53,6 +81,9 @@ $theme-colors: (
 
 $theme-colors-transform: ();
 
+$theme-colors: map-merge($theme-colors, $green-mix);
+$theme-colors: map-merge($theme-colors, $blue-mix);
+
 @each $color, $value in $theme-colors {
     $theme-colors-transform: map-merge($theme-colors-transform, (
         "#{$color}-text-emphasis": shade-color($value, 60%),
@@ -66,6 +97,18 @@ $theme-colors: map-merge($theme-colors, $theme-colors-transform);
 $btn-padding-y: 0.25rem;
 $btn-padding-x: 0.5rem;
 $btn-font-size: 0.75rem;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4.5,
+  7: $spacer * 6,
+);
 
 @import '~bootstrap/scss/bootstrap.scss';
 
