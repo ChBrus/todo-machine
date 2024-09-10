@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+
 body {
     --header-width: 7em;
     display: grid;
@@ -21,4 +23,63 @@ body {
 
 #root {
     grid-area: content;
+}
+
+.todo-counter {
+    display: grid;
+    grid-template-columns: 1fr calc(5em + 1px);
+    margin-bottom: 1rem;
+
+    font-family: "SUSE", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1.5em;
+
+    h3 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0
+    }
+
+    .counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid transparent;
+        border-radius: 5rem;
+        cursor: none;
+        padding: 1rem;
+        gap: .25rem;
+        transition: border-color, font-weight 100ms ease-in;
+    }
+}
+
+.counter:hover {
+    border-color: #EFF0F4;
+    font-weight: 450;
+    cursor: pointer;
+}
+
+.todo-item, .todo-creater {
+    display: grid;
+    grid-template-columns: 1.25em 1fr 1.25em;
+
+    .todo-completer, .todo-deleter {
+        cursor: pointer;
+    }
+}
+
+.todo-creater .todo-input{
+    all: unset;
+    width: 100%;
+    height: auto;
+    field-sizing: content;
+    transition: All .5s linear;
+
+    :hover {
+        border: none;
+    }
 }

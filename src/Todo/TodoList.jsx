@@ -1,14 +1,58 @@
+import CreateTodos from "./CreateTodos";
+import TodoCounter from "./TodoCounter";
 import TodoItem from "./TodoItem";
+import Toggle from "./module/Toggle";
 
-function TodoList() {
+function TodoList({
+    todosToggle = new Toggle(),
+    listsToggle = new Toggle()
+}) {
+    const todosTemp = todosToggle.objectsList
+
+    const todosInfo = {
+        completed: todosTemp.filter(todo => todo.completed).length,
+        total: todosTemp.length
+    }
+
+    const completedTodosRequired = todosInfo.completed === 0 ? ' d-none' : ''
+
     return (
-        <main className="todo-list py-2 px-4">
-            <h3>Inbox</h3>
-            <ul className="navbar-nav">
-                <TodoItem description='Estudiar para el EXANI-II en curso.unibetas.com' />
-                <TodoItem description='Comer más de 1 pizza' />
-                <TodoItem description='Sacar el bote del refrigerador para tomar agua bien helada' />
-            </ul>
+        <main className="todo-list py-2 px-4 text-light">
+            <TodoCounter
+                listHeader={'Inbox'}
+                todosInfo={todosInfo}
+            />
+            <section>
+                <ul className="navbar-nav">
+                    {todosTemp.filter(todo => !todo.completed).map((todo, todoIdx) => {
+                        return (
+                            <TodoItem
+                                key={'to-complete' + todoIdx}
+                                todo={todo}
+                                todosToggle={todosToggle}
+                                title={todo.title}
+                                completed={todo.completed}
+                            />
+                        )
+                    })}
+                </ul>
+                <h6 className={completedTodosRequired} >Completados</h6>
+                <ul className={"navbar-nav" + completedTodosRequired}>
+                    {todosTemp.filter(todo => todo.completed).map((todo, todoIdx) => {
+                        return (
+                            <TodoItem
+                                key={'to-complete' + todoIdx}
+                                todo={todo}
+                                todosToggle={todosToggle}
+                                title={todo.title}
+                                completed={todo.completed}
+                            />
+                        )
+                    })}
+                </ul>
+            </section>
+            <hr />
+            <CreateTodos />
         </main>
     );
 }

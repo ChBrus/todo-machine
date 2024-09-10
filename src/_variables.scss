@@ -19,10 +19,12 @@ $white: #fff;
 $danger: $red;
 $success: $green;
 $disabled: shade-color($gray, 50%);
-$primary: #F8EDE3;
-$secondary: #DFD3C3;
-$third: #D0B8A8;
-$text: shade-color(#8D493A, 25%);
+$primary: #1b2236;
+$secondary: #314673;
+$third: #a2b4d7;
+$fourth: #2b3c61;
+$light: #f4f6fb;
+$text: $light;
 
 $theme-colors: (
     "blue": $blue,
@@ -44,7 +46,9 @@ $theme-colors: (
     "primary": $primary,
     "secondary": $secondary,
     "third": $third,
+    "fourth": $fourth,
     "text": $text,
+    "light": $light,
 );
 
 $theme-colors-transform: ();
