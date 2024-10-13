@@ -1,4 +1,4 @@
-import { Icon } from "./module/Icon"
+import { BsCheckCircleFill, BsCircle, BsTrashFill } from "react-icons/bs";
 import Todo from "./module/Todo";
 import Toggle from "./module/Toggle";
 
@@ -8,12 +8,9 @@ function TodoItem({
     title,
     completed
 }) {
-    const completerClass = 'todo-completer'
-    const icon = (completed ? Icon.CheckCircle.getClass() + ' text-green-700' : Icon.Circle.getClass())
-
     return (
         <li className="todo-item nav-item bg-third text-primary">
-            <span className={completerClass} role="checkbox"
+            <span className='todo-completer' role="checkbox" aria-checked="false"
                 onClick={() => {
                     const todoTemp = todo
                     todoTemp.completed = !todoTemp.completed
@@ -21,23 +18,44 @@ function TodoItem({
                     todosToggle.updateToggle(todo, todoTemp)
                 }}
             >
-                <i className={icon}></i>
+                {
+                    completed ?
+                    <BsCheckCircleFill className="ri text-green-700" /> :
+                    <BsCircle className="ri" />
+                }
             </span>
             <p className="todo-description">{title}</p>
-            <span className="btn btn-danger d-flex justify-content-center align-items-center" role="checkbox"
+            <span className="btn btn-red d-flex justify-content-center align-items-center p-0" role="checkbox" aria-checked="false"
                 onClick={() => {
-                    const todoTemp = todo
-                    todoTemp.completed = !todoTemp.completed
-
                     todosToggle.deleteToggle(todo)
                 }}
             >
-                <i className={Icon.Trash.getClass()}></i>
+
+                <BsTrashFill className="ri text-light" />
             </span>
             <ul className="todo-category">
-                
+                {todo.lists.map((list) => {
+                    return (
+                        <TodoCategory
+                            key={list.id}
+                            list={list}
+                        />
+                    );
+                })}
             </ul>
         </li>
+    );
+}
+
+function TodoCategory({
+    list
+}) {
+    return (
+        <>
+            <li className={`btn btn-${list.color}`}>
+                {list.title}
+            </li>
+        </>
     );
 }
 

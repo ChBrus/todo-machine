@@ -1,16 +1,24 @@
-import { Icon, IconFactory } from "./Icon"
-
 class ListFactory {
+    static id = 1
+
     /**
      * 
      * @param {string} title Título de la lista
-     * @param {IconFactory} icon Tipo de ícono
+     * @param {*} icon Tipo de ícono
      */
-    constructor(title, icon) {
+    constructor(title, icon, isChoosen = false) {
+        this.id = ListFactory.id
+        ListFactory.id++
+
         this.title = title
-        this.color = '#000'
+        this.color = 'black'
         this.icon = icon
-        this.isChoosen = false
+        this.isChoosen = isChoosen
+    }
+
+    setId(id) {
+        this.id = id
+        return this
     }
 
     setColor(color) {
@@ -31,6 +39,15 @@ class ListFactory {
         return listsTemp
     }
 
+    /**
+     * 
+     * @param {[]} lastLists 
+     * @returns {ListFactory}
+     */
+    static getCurrentlyList(lastLists = []) {
+        return lastLists.filter(list => list.isChoosen)[0]
+    }
+
     // Función para validar el color en formato HEX
     isValidHex(color) {
         // Expresión regular para color HEX (# seguido de 3 o 6 caracteres 0-9, a-f, o A-F)
@@ -39,8 +56,4 @@ class ListFactory {
     }
 }
 
-const Lists = {
-    Inbox: new ListFactory('Inbox', Icon.Inbox)
-}
-
-export { ListFactory, Lists };
+export { ListFactory };

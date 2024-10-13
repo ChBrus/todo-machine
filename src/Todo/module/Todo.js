@@ -1,8 +1,6 @@
-import { ListFactory, Lists } from "./List"
-import { format, parse } from "@formkit/tempo"
+// import { format, parse } from "@formkit/tempo"
 
 class Todo {
-
     /**
      * 
      * @param {string} title Título del ToDo
@@ -13,16 +11,13 @@ class Todo {
         list = null
     ) {
         this.title = title
-        this.lists = [Lists.Inbox]
-        this.lists.push(list)
+        this.lists = []
+        if (list) this.lists.push(list)
+
         this.deadlineDate = null
         this.createdDate = new Date()
         this.createdDate = this.createdDate.getTime()
         this.completed = false
-    }
-
-    showList() {
-        return this.lists.filter(list => list !== Lists.Inbox)
     }
 }
 

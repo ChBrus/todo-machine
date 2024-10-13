@@ -109,7 +109,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .todo-item {
-    
+    grid-template-rows: 1fr auto;
+    filter: grayscale(0);
+    cursor: auto;
+    transition: filter, cursor 100ms ease-in;
+}
+
+.todo-item .todo-category {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    list-style: none;
+    padding: 0 1rem;
+
+    li {
+        font-size: .7em;
+    }
+}
+
+.todo-item:hover {
+    cursor: pointer;
+    filter: grayscale(.5);
 }
 
 .todo-creater {
@@ -124,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-areas: "check-icon text-area trash-icon";
     padding: 1rem .75rem;
 
-    .bi {
+    .ri {
         opacity: .5;
         transition: opacity .5s ease-in-out;
     }
@@ -147,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #EFF0F4;
 }
 
-.todo-creater .todo-input:hover ~ .bi, 
-.todo-creater .todo-input:focus ~ .bi {
+.todo-creater .todo-input:hover ~ .ri, 
+.todo-creater .todo-input:focus ~ .ri {
     opacity: 1;
 }
