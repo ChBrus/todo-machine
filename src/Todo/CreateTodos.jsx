@@ -1,4 +1,4 @@
-import { Icon } from "./module/Icon";
+import { BsCircle, BsTrashFill } from "react-icons/bs";
 
 function CreateTodos({
     
@@ -9,12 +9,12 @@ function CreateTodos({
                 <textarea className="todo-input" style={{
                     gridArea: 'text-area'
                 }}></textarea>
-                <i className={Icon.Circle.getClass()} style={{
+                <BsCircle className="ri w-100 mt-1" style={{
                     gridArea: 'check-icon'
-                }}></i>
-                <i className={Icon.Trash.getClass()} style={{
+                }} />
+                <BsTrashFill className="ri w-100 mt-1" style={{
                     gridArea: 'trash-icon'
-                }}></i>
+                }}/>
             </div>
         </section>
     );

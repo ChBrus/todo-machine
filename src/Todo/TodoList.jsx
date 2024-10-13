@@ -1,5 +1,6 @@
 import TodoCounter from "./TodoCounter";
 import TodoItem from "./TodoItem";
+import { ListFactory } from "./module/List";
 import Toggle from "./module/Toggle";
 
 function TodoList({
@@ -7,6 +8,15 @@ function TodoList({
     listsToggle = new Toggle()
 }) {
     const todosTemp = todosToggle.objectsList
+    .filter(todo => {
+        const currentList = ListFactory.getCurrentlyList(listsToggle.objectsList)
+
+        if (currentList.id === 1) return true
+
+        const listTemp = todo.lists.filter(list => currentList === list)
+
+        return listTemp.length > 0
+    })
 
     const todosInfo = {
         completed: todosTemp.filter(todo => todo.completed).length,
@@ -18,7 +28,7 @@ function TodoList({
     return (
         <main className="todo-list py-2 px-4 mb-6">
             <TodoCounter
-                listHeader={'Inbox'}
+                listHeader={ListFactory.getCurrentlyList(listsToggle.objectsList).title}
                 todosInfo={todosInfo}
             />
             <section>
