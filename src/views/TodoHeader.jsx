@@ -1,5 +1,6 @@
-import { ListFactory } from "./module/List"
-import Toggle from "./module/Toggle";
+import { IconFactory } from "../module/Icon";
+import { ListFactory } from "../module/List"
+import Toggle from "../module/Toggle";
 
 function TodoHeader({
     listsToggle = new Toggle()
@@ -32,12 +33,14 @@ function TodoHeader({
  * @returns 
  */
 function TodoListButtons({
-    lista = ListFactory,
+    lista = new ListFactory(),
     listsToggle = new Toggle()
 }) {
     const changeCurrentList = () => {
         listsToggle.setObject(lista.choose(listsToggle.objectsList))
     }
+
+    const Icon = IconFactory.getIcon(lista.iconId)
 
     return (
         <li
@@ -45,7 +48,7 @@ function TodoListButtons({
             onClick={changeCurrentList}
         >
             <button className="btn w-100 btn-third d-flex justify-content align-items gap-2">
-                {lista.icon}
+                <i className='ri'>{Icon}</i>
                 <span className="description">{lista.title}</span>
             </button>
         </li>

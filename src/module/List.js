@@ -1,18 +1,18 @@
 class ListFactory {
-    static id = 1
-
     /**
      * 
      * @param {string} title Título de la lista
      * @param {*} icon Tipo de ícono
      */
-    constructor(title, icon, isChoosen = false) {
-        this.id = ListFactory.id
-        ListFactory.id++
-
+    constructor({
+        title = '',
+        iconId = 1,
+        color = 'black',
+        isChoosen = false
+    }) {
         this.title = title
-        this.color = 'black'
-        this.icon = icon
+        this.color = color
+        this.iconId = iconId
         this.isChoosen = isChoosen
     }
 

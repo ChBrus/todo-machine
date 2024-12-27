@@ -1,6 +1,6 @@
 import { BsCheckCircleFill, BsCircle, BsTrashFill } from "react-icons/bs";
-import Todo from "./module/Todo";
-import Toggle from "./module/Toggle";
+import Todo from "../../module/Todo";
+import Toggle from "../../module/Toggle";
 
 function TodoItem({
     todo = new Todo(''),
@@ -30,14 +30,13 @@ function TodoItem({
                     todosToggle.deleteToggle(todo)
                 }}
             >
-
                 <BsTrashFill className="ri text-light" />
             </span>
             <ul className="todo-category">
                 {todo.lists.map((list) => {
                     return (
                         <TodoCategory
-                            key={list.id}
+                            key={list.iconId}
                             list={list}
                         />
                     );

@@ -1,8 +1,6 @@
 import { BsCircle, BsTrashFill } from "react-icons/bs";
 
-function CreateTodos({
-    
-}) {
+function CreateTodos() {
     return (
         <section className="todo-creater px-3 py-3 bg-green-700">
             <div className="content bg-fourth">

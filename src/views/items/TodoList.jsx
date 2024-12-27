@@ -1,7 +1,7 @@
-import TodoCounter from "./TodoCounter";
+import TodoCounter from "../TodoCounter";
 import TodoItem from "./TodoItem";
-import { ListFactory } from "./module/List";
-import Toggle from "./module/Toggle";
+import { ListFactory } from "../../module/List";
+import Toggle from "../../module/Toggle";
 
 function TodoList({
     todosToggle = new Toggle(),
@@ -11,7 +11,7 @@ function TodoList({
     .filter(todo => {
         const currentList = ListFactory.getCurrentlyList(listsToggle.objectsList)
 
-        if (currentList.id === 1) return true
+        if (currentList.iconId === 1) return true
 
         const listTemp = todo.lists.filter(list => currentList === list)
 
